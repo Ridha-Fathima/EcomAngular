@@ -1,0 +1,78 @@
+<div style="margin-top: 50px">
+  <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Loading">
+    <div class="parent">
+      <div class="child">
+        <div class="imgDiv" nz-row>
+          <h2 style="margin-left: 230px">Order Details</h2>
+        </div>
+
+        <form nz-form [formGroup]="placeOrderForm" (ngSubmit)="placeOrder()">
+          <div nz-row>
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control
+                  nzHasFeedback
+                  [nzXs]="24"
+                  nzErrorTip="This Input is required!"
+                >
+                  <input
+                    nz-input
+                    placeholder="Address"
+                    formControlName="address"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control
+                  nzHasFeedback
+                  [nzXs]="24"
+                  nzErrorTip="This Input is required!"
+                >
+                  <textarea
+                    rows="2"
+                    nz-input
+                    placeholder="Description"
+                    formControlName="orderDescription"
+                  ></textarea>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+
+            <div nz-col nzSpan="24">
+              <nz-form-item>
+                <nz-form-control
+                  nzHasFeedback
+                  [nzXs]="24"
+                  nzErrorTip="This Input is required!"
+                >
+                  <nz-select
+                    nzShowSearch
+                    nzAllowClear
+                    nzPlaceHolder="Select a Payment Method"
+                    formControlName="payment"
+                  >
+                    <nz-option
+                      *ngFor="let payment of payments"
+                      nzLabel="{{ payment }}"
+                      nzValue="{{ payment }}"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+          <button
+            nz-button
+            class="login-form-button login-form-margin"
+            [nzType]="'primary'"
+          >
+            Place
+          </button>
+        </form>
+      </div>
+    </div>
+  </nz-spin>
+</div>
