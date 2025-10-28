@@ -35,19 +35,21 @@ export class CustomerService {
     );
   }
 
-  addProductToCart(productId: number): Observable<any> {
+addProductToCart(productId: number): Observable<any> {
     let cartDTO = {
       productId: productId,
-      userId: Number(LocalStorageService.getUser()),
+      userId: LocalStorageService.getUser(),
     };
     console.log('cartdto: ', cartDTO);
 
-    return this.http.post<[]>(BASIC_URL + 'api/customer/cart', cartDTO, {
-      headers: this.createAuthorization(),
-    });
+    return this.http.post<[]>(BASIC_URL + 'api/customer/cart', cartDTO
+   
+    );
   }
 
+
   getCartByUserId(): Observable<any> {
+    
     return this.http.get<[]>(
       BASIC_URL + 'api/customer/cart/' + LocalStorageService.getUser(),
       {
